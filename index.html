@@ -1,0 +1,222 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <title>Laba4</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+</head>
+<body>
+    <header>
+        <p>ToDo List</p>
+    </header>
+    <main>
+        <p class="todo">ToDo List</p>
+        <div class="input">
+            <div>
+                <input class="task" type="text" name="Text1" value="Новая задача" />
+                <button>Add</button>
+                <button class="delete">Delete All</button>
+            </div>
+            <div class="data">
+                <input class="data1" type="text" name="day" value="" />
+                <input class="data1" type="text" name="month" value="" />
+                <input class="data2" type="text" name="year" value="" />
+            </div>
+        </div>
+        <div class="table" style="margin-top: 70px;">
+            <p>Задача</p>
+            <p style="margin-left: 500px; margin-right: 100px;">Дата</p>
+            <p>Удалить</p>
+        </div>
+        <div class="main_content">
+            <div class="new_task">
+                <input class="checkbox "type="checkbox" name="check" value="" />
+                <div class="main_content1">
+                   
+                </div>
+                <div class="main_content2">
+                    
+                </div>
+                <div class="main_content3">
+                    <img src="delete.png" alt="Alt" width="30" height="30"/>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        var input = document.getElementsByTagName("input")[0];
+        var button = document.getElementsByTagName("button")[0];
+        var day = document.getElementsByClassName("data1")[0];
+        var month = document.getElementsByClassName("data1")[1];
+        var year = document.getElementsByClassName("data2")[0];
+        var checkbox = document.getElementsByTagName("input")[4];
+
+        var divTask = document.getElementsByClassName("new_task")[0];
+
+
+        day.value = new Date().getDate();
+        month.value = new Date().getMonth() + 1;
+        year.value= new Date().getFullYear();
+
+        var click = 0;
+
+        day.onclick = function () {
+            day.style.color = "black";
+            month.style.color = "black";
+            year.style.color = "black";
+        }
+        month.onclick = function () {
+            month.style.color = "black";
+            day.style.color = "black";
+            year.style.color = "black";
+        }
+        year.onclick = function () {
+            month.style.color = "black";
+            year.style.color = "black";
+            day.style.color = "black";
+        }
+        input.onclick = function () {
+            input.style.color = "black";
+        }
+        
+        button.onclick = function () {
+            var dayValue = day.value;
+            var monthValue = month.value;
+            var yearValue = year.value;
+
+                if (dayValue > 31 || dayValue < 1 || monthValue > 12 || monthValue < 1 || yearValue < 2018) {
+                    alert("Вы ввели неправильную дату!");
+                }
+                else {
+                    if (click == 0) {
+
+
+                        var divMainContent1 = document.getElementsByClassName("main_content1")[0];
+                        divTask.style.visibility = 'visible';
+
+                        var task = document.createElement("p");
+                        var taskText = document.createTextNode(input.value);
+                        task.appendChild(taskText);
+                        divMainContent1.appendChild(task);
+
+
+                        var divMainContent2 = document.getElementsByClassName("main_content2")[0];
+                        var data = document.createElement("p");
+                        var day1 = document.createTextNode(day.value);
+                        var month1 = document.createTextNode(month.value);
+                        var year1 = document.createTextNode(year.value);
+                        var data1 = document.createTextNode(day.value + "." + month.value + "." + year.value);
+                        data.appendChild(data1);
+                        divMainContent2.appendChild(data);
+
+                        click++;
+                    }
+                    else {
+                        var mainCon = document.getElementsByClassName("main_content")[0];
+                        var newTask = document.createElement('div');
+                        newTask.className = "new_task";
+                        newTask.style.visibility = "visible";
+                        newTask.style.display = "flex";
+                        newTask.style.alignItems = "centre";
+                        mainCon.appendChild(newTask);
+
+
+                        var newCheck = document.createElement("input");
+                        var mainCon1 = document.createElement("div");
+                        var mainCon2 = document.createElement("div");
+                        var mainCon3 = document.createElement("div");
+
+                        mainCon1.className = "main_content1";
+                        mainCon2.className = "main_content2";
+                        mainCon3.className = "main_content3";
+
+                        newCheck.type = "checkbox";
+                        newCheck.className = "checkbox";
+                        newTask.insertBefore(newCheck, null);
+                        newTask.appendChild(mainCon1);
+                        newTask.appendChild(mainCon2);
+                        newTask.appendChild(mainCon3);
+
+                        var newPar = document.createElement("p");
+                        var taskText1 = document.createTextNode(input.value);
+                        newPar.appendChild(taskText1);
+                        mainCon1.appendChild(newPar);
+
+                        var newData = document.createElement("p");
+                        var day2 = document.createTextNode(day.value);
+                        var month2 = document.createTextNode(month.value);
+                        var year2 = document.createTextNode(year.value);
+                        var data2 = document.createTextNode(day.value + "." + month.value + "." + year.value);
+                        newData.appendChild(data2);
+                        mainCon2.appendChild(newData);
+
+                        var newImg = document.createElement("img");
+                        newImg.src = "delete.png";
+                        newImg.style.width = "30px";
+                        newImg.style.height = "30px";
+                        mainCon3.appendChild(newImg);
+
+                        newImg.onclick = function () {
+                            var child1 = newImg.parentNode;
+                            var child2 = child1.parentNode;
+                            var parent = child2.parentNode;
+                            parent.removeChild(child2);
+                            parent.style.textDecoration = "none";
+
+                        }
+                        
+                        
+                        var b = true;
+                        newCheck.onclick = function () {
+                            parrentCheck = newCheck.parentNode;
+                            if (b) {
+                                parrentCheck.style.textDecoration = "line-through";
+                                b = false;
+                            }
+                            else {
+                                parrentCheck.style.textDecoration = "none";
+                                b = true;
+                            }
+                        }
+
+
+
+                    }
+
+                }
+            
+            }
+
+        var img = document.getElementsByTagName("img")[0];
+        img.onclick = function(){
+            var parent = document.getElementsByClassName("main_content")[0];
+            var child1 = img.parentNode;
+            var child2 = child1.parentNode;
+            parent.removeChild(child2);
+            
+        }
+
+        var check = document.getElementsByClassName("checkbox")[0];
+        var a = true;
+        check.onclick = function () {
+            var main1 = document.getElementsByClassName("main_content1")[0];
+            if (a) {
+                main1.style.textDecoration = "line-through";
+                a = false;
+            }
+            else {
+                main1.style.textDecoration = "none";
+                a = true;
+            }
+        }
+
+        var deleteButton = document.getElementsByClassName("delete")[0];
+        deleteButton.onclick = function () {
+            var container = document.getElementsByClassName("main_content")[0];
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
+        }        
+    </script>
+</body>
+</html>

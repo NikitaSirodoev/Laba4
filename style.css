@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+header{
+    width: 100%;
+    height:auto;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 15px;
+    padding-left: 50px;
+}
+
+.todo{
+    font-size: 30px;
+    margin-top: 100px;
+    margin-left: 300px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+.task {
+    width: 700px;
+    height: auto;
+    font-size: 20px;
+    color: #D3D3D3;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px #D3D3D3;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 20px;
+    color: ghostwhite;
+    background-color: #2f7bb8;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.data1 {
+    border: solid 1px #D3D3D3;
+    color: #D3D3D3;
+    width:30px;
+    text-align: center;
+}
+
+.data2 {
+    border: solid 1px #D3D3D3;
+    color: #D3D3D3;
+    width: 70px;
+    text-align: center;
+}
+
+.main_content {
+    width: 900px;
+    height: auto;
+    border: solid 1px #D3D3D3;
+    margin-left: 300px;
+    border-radius: 5px;
+}
+
+.new_task {
+    display: flex;
+    align-items: center;
+    width: 900px;
+    height: auto;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    visibility: hidden;
+    
+}
+
+.new_task p{
+
+}
+
+.checkbox{
+    width: 15px;
+    height: 15px;
+    background: white;
+    margin-right: 30px;
+}
+
+.table{
+    margin-top:30px;
+    display: flex;
+    font-size: 20px;
+    margin-left: 375px;
+}
+
+.main_content1{
+    width: 500px;
+    margin-right: 35px;
+}
+
+.main_content2 {
+    text-align: center;
+    width: 90px;
+    margin-right: 85px;
+}
+
+.delete {
+    font-size: 20px;
+    color: ghostwhite;
+    background-color:crimson;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 140px;
+    text-align: center;
+
+}
